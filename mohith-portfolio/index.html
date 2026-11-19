@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohith Kothuru Narayanaswamy | 3D Animator, VFX Artist & Video Editor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        studioBg: '#0c0c0e',
+                        studioSurface: '#141417',
+                        studioElevated: '#1b1b20',
+                        studioBorder: '#242429',
+                        studioGold: '#f59e0b',
+                        studioAmber: '#d97706',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Studio Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0e;
+            color: #f4f4f6;
+        }
+        .studio-glass {
+            background: rgba(12, 12, 14, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid #242429;
+        }
+        .studio-card {
+            background-color: #141417;
+            border: 1px solid #242429;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .studio-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(245, 158, 11, 0.45);
+            box-shadow: 0 18px 40px -15px rgba(0, 0, 0, 0.85);
+        }
+        .viewport-grid {
+            background-size: 24px 24px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-studioBg text-[#f4f4f6] min-h-screen selection:bg-studioGold selection:text-black overflow-x-hidden">
+
+    <!-- Sticky Top Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 studio-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-2.5 group">
+                <span class="w-9 h-9 rounded-xl bg-studioElevated border border-studioBorder flex items-center justify-center text-studioGold group-hover:border-studioGold/60 transition-colors">
+                    <i class="fa-solid fa-cube text-sm"></i>
+                </span>
+                <span class="text-base sm:text-lg font-extrabold tracking-wider text-white">
+                    MOHITH <span class="text-studioGold">K.N.</span>
+                </span>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                <a href="#showreel" class="hover:text-white transition-colors">Showreel</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-3">
+                <button onclick="copyEmailHeader()" id="header-copy-btn" class="inline-flex items-center px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-studioSurface text-gray-200 border border-studioBorder hover:border-studioGold/60 hover:text-white transition-colors">
+                    <i class="fa-regular fa-copy text-studioGold mr-2"></i>
+                    <span id="header-copy-label">Copy Email</span>
+                </button>
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl bg-studioSurface border border-studioBorder text-gray-300 hover:text-white">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-5 space-y-1.5 bg-studioSurface border-t border-studioBorder">
+            <a href="#showreel" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-studioElevated hover:text-white">Showreel</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-studioElevated hover:text-white">Projects</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-studioElevated hover:text-white">Experience</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-studioElevated hover:text-white">Skills</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:bg-studioElevated hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section with Animated 3D Perspective Grid & Wireframe Mesh -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-studioBorder">
+        <!-- 3D Viewport Canvas Background -->
+        <canvas id="hero-3d-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+        <!-- Warm Studio Rim Glow -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] bg-amber-500/[0.04] rounded-full blur-[130px] pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-7">
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-studioSurface text-gray-300 border border-studioBorder shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-studioGold mr-2.5 animate-pulse"></span>
+                Available for Full-Time Roles &bull; Bangalore, India
+            </div>
+
+            <!-- Headline & Role -->
+            <div class="space-y-3">
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Mohith Kothuru <span class="text-studioGold">Narayanaswamy</span>
+                </h1>
+                <p class="text-lg sm:text-2xl font-medium text-gray-200">
+                    3D Animator, VFX Artist &amp; Video Editor
+                </p>
+            </div>
+
+            <!-- Bio Summary -->
+            <p class="text-sm sm:text-base text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Creative BCA graduate (Sri Devaraj Urs Educational Trust, Sep 2022 – June 2026) with a 1-year Certificate Program in 2D/3D Animation, VFX and Digital Design from Boston Institute of Analytics (BIA), Bengaluru – MG Road Campus (Sep 2025 – Sep 2026). Hands-on pipeline experience from storyboard and 3D modeling to final render and commercial edit.
+            </p>
+
+            <!-- Core 4-Tool Pipeline Strip -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto pt-2 text-left">
+                <div class="p-3.5 rounded-xl bg-studioSurface/90 border border-studioBorder flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-cube text-sm"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-bold text-white truncate">Blender</p>
+                        <p class="text-[11px] text-gray-400 truncate">3D Modeling &amp; Animation</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-studioSurface/90 border border-studioBorder flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-gamepad text-sm"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-bold text-white truncate">Unreal Engine</p>
+                        <p class="text-[11px] text-gray-400 truncate">Real-Time Environments</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-studioSurface/90 border border-studioBorder flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-bold text-white truncate">Adobe After Effects</p>
+                        <p class="text-[11px] text-gray-400 truncate">VFX &amp; Compositing</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-studioSurface/90 border border-studioBorder flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-film text-sm"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-bold text-white truncate">Adobe Premiere Pro</p>
+                        <p class="text-[11px] text-gray-400 truncate">Video Editing &amp; Color</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary CTA Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-3">
+                <a href="#projects" class="px-7 py-3.5 rounded-xl text-sm font-semibold bg-studioGold text-black hover:bg-amber-400 transition-colors shadow-lg">
+                    <i class="fa-solid fa-layer-group mr-2"></i> View 3D &amp; VFX Projects
+                </a>
+                <a href="#showreel" class="px-7 py-3.5 rounded-xl text-sm font-semibold bg-studioSurface text-gray-200 border border-studioBorder hover:bg-studioElevated hover:text-white transition-colors">
+                    <i class="fa-solid fa-play mr-2 text-studioGold"></i> Watch Demo Reel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Hero Showreel Theater (16:9) -->
+    <section id="showreel" class="py-16 sm:py-20 bg-studioSurface/30 border-b border-studioBorder">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                <div>
+                    <p class="text-xs font-mono uppercase tracking-widest text-studioGold">Demo Reel Theater</p>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">2026 Animation &amp; VFX Showreel</h2>
+                </div>
+                <span class="inline-flex items-center text-xs font-mono text-gray-400 bg-studioSurface px-3.5 py-1.5 rounded-xl border border-studioBorder self-start sm:self-auto">
+                    File Path: <span class="text-studioGold ml-1.5">assets/showreel.mp4</span>
+                </span>
+            </div>
+
+            <!-- 16:9 Video Container with Graceful Fallback Overlay -->
+            <div class="relative aspect-video rounded-2xl bg-studioBg viewport-grid border border-studioBorder overflow-hidden shadow-2xl">
+                <video
+                    id="showreel-video"
+                    src="assets/showreel.mp4"
+                    class="w-full h-full object-cover"
+                    controls
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    onerror="handleMediaFallback(this)"
+                ></video>
+
+                <!-- Fallback Overlay (Automatically visible until assets/showreel.mp4 is added) -->
+                <div class="media-fallback hidden absolute inset-0 flex flex-col justify-between p-6 sm:p-8 bg-studioBg/95 viewport-grid">
+                    <div class="flex items-center justify-between text-xs font-mono text-gray-400">
+                        <span class="px-2.5 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">16:9 WIDESCREEN SHOWREEL</span>
+                        <span>PREMIERE PRO &bull; AFTER EFFECTS</span>
+                    </div>
+
+                    <div class="my-auto flex flex-col items-center justify-center text-center max-w-md mx-auto space-y-3">
+                        <div class="w-16 h-16 rounded-2xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center shadow-lg">
+                            <i class="fa-solid fa-clapperboard text-2xl"></i>
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-white">Showreel Video Ready</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Place your compiled demo reel inside your folder at <code class="px-2 py-0.5 rounded bg-studioSurface border border-studioBorder text-studioGold">assets/showreel.mp4</code> and it will automatically play here.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] font-mono text-gray-500 border-t border-studioBorder/70 pt-3">
+                        <span>BLENDER &bull; UNREAL ENGINE &bull; AFTER EFFECTS &bull; PREMIERE PRO</span>
+                        <span>READY FOR VERCEL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Interactive Production Portfolio (All 5 Projects Pre-Wired to assets/) -->
+    <section id="projects" class="py-20 bg-studioBg border-b border-studioBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                <div class="space-y-2">
+                    <p class="text-xs font-mono uppercase tracking-widest text-studioGold">Selected Production Works</p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Interactive Project Showcase</h2>
+                    <p class="text-gray-400 text-sm max-w-2xl">
+                        Switch between <span class="text-white font-medium">Final Output</span> and <span class="text-white font-medium">Before / Viewport Pass</span> to inspect modeling topology, lighting rigs, and final rendered sequences. Click any preview to open full-screen.
+                    </p>
+                </div>
+
+                <!-- Category Filter Tabs -->
+                <div class="flex flex-wrap gap-2" id="filter-tabs">
+                    <button data-filter="all" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-studioGold text-black transition-all">
+                        All Works (5)
+                    </button>
+                    <button data-filter="animation" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-studioSurface text-gray-300 border border-studioBorder hover:text-white transition-all">
+                        3D Animation
+                    </button>
+                    <button data-filter="product" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-studioSurface text-gray-300 border border-studioBorder hover:text-white transition-all">
+                        Product Visualization
+                    </button>
+                    <button data-filter="environments" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-studioSurface text-gray-300 border border-studioBorder hover:text-white transition-all">
+                        Environments &amp; VFX
+                    </button>
+                </div>
+            </div>
+
+            <!-- 5-Project Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
+
+                <!-- PROJECT 1: Iceland Glacier & Terrain Environment (iceland-final.mp4 + iceland-before.jpg) -->
+                <article class="project-card studio-card rounded-2xl overflow-hidden flex flex-col" data-category="environments">
+                    <div class="px-5 py-3.5 bg-studioElevated/60 border-b border-studioBorder flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-xs font-mono text-studioGold">01 // Environments &amp; VFX</span>
+                        <div class="inline-flex rounded-xl bg-studioBg p-1 border border-studioBorder">
+                            <button onclick="toggleProjectPass('iceland', 'final')" id="iceland-tab-final" class="px-3 py-1 rounded-lg text-xs font-semibold bg-studioGold text-black transition-all">
+                                Final Output (Video)
+                            </button>
+                            <button onclick="toggleProjectPass('iceland', 'before')" id="iceland-tab-before" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all">
+                                Before / Viewport Pass (Photo)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Media Viewport -->
+                    <div class="relative aspect-video bg-studioBg viewport-grid border-b border-studioBorder overflow-hidden group">
+                        <!-- Final Video View -->
+                        <div id="iceland-view-final" class="w-full h-full relative">
+                            <video
+                                src="assets/iceland-final.mp4"
+                                class="w-full h-full object-cover cursor-pointer"
+                                controls
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                onclick="openLightbox('video', 'assets/iceland-final.mp4', 'Iceland Glacier & Terrain Environment — Final Output')"
+                                onerror="handleMediaFallback(this)"
+                            ></video>
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-mountain text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/iceland-final.mp4</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Final Glacier Flythrough Video Slot</p>
+                            </div>
+                        </div>
+
+                        <!-- Before Photo View -->
+                        <div id="iceland-view-before" class="hidden w-full h-full relative">
+                            <img
+                                src="assets/iceland-before.jpg"
+                                alt="Iceland Glacier Viewport Pass"
+                                class="w-full h-full object-cover cursor-pointer"
+                                onclick="openLightbox('image', 'assets/iceland-before.jpg', 'Iceland Glacier & Terrain Environment — Before / Viewport Pass')"
+                                onerror="handleMediaFallback(this)"
+                            />
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-layer-group text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/iceland-before.jpg</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Before / Blender Sculpt Viewport Photo Slot</p>
+                            </div>
+                        </div>
+
+                        <!-- Lightbox Expand Trigger -->
+                        <button onclick="openActivePassLightbox('iceland')" title="Open Full-Screen Lightbox" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-lg bg-studioBg/85 border border-studioBorder text-gray-300 hover:text-studioGold hover:border-studioGold/60 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Iceland Glacier &amp; Terrain Environment</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Large-scale arctic glacier formations, procedural mountain ranges, and reflective water shaders built with optimized polygon topology and atmospheric depth.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-3 border-t border-studioBorder">
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Blender</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Unreal Engine</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">After Effects</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 2: BMW M8 Automotive Commercial Sequence (bmw-final.mp4 + bmw-before.jpg) -->
+                <article class="project-card studio-card rounded-2xl overflow-hidden flex flex-col" data-category="animation">
+                    <div class="px-5 py-3.5 bg-studioElevated/60 border-b border-studioBorder flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-xs font-mono text-studioGold">02 // 3D Animation</span>
+                        <div class="inline-flex rounded-xl bg-studioBg p-1 border border-studioBorder">
+                            <button onclick="toggleProjectPass('bmw', 'final')" id="bmw-tab-final" class="px-3 py-1 rounded-lg text-xs font-semibold bg-studioGold text-black transition-all">
+                                Final Output (Video)
+                            </button>
+                            <button onclick="toggleProjectPass('bmw', 'before')" id="bmw-tab-before" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all">
+                                Before / Viewport Pass (Photo)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Media Viewport -->
+                    <div class="relative aspect-video bg-studioBg viewport-grid border-b border-studioBorder overflow-hidden group">
+                        <!-- Final Video View -->
+                        <div id="bmw-view-final" class="w-full h-full relative">
+                            <video
+                                src="assets/bmw-final.mp4"
+                                class="w-full h-full object-cover cursor-pointer"
+                                controls
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                onclick="openLightbox('video', 'assets/bmw-final.mp4', 'BMW M8 Automotive Commercial Sequence — Final Output')"
+                                onerror="handleMediaFallback(this)"
+                            ></video>
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-car-side text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/bmw-final.mp4</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Final BMW Bridge Animation Video Slot</p>
+                            </div>
+                        </div>
+
+                        <!-- Before Photo View -->
+                        <div id="bmw-view-before" class="hidden w-full h-full relative">
+                            <img
+                                src="assets/bmw-before.jpg"
+                                alt="BMW 3D Viewport Pass"
+                                class="w-full h-full object-cover cursor-pointer"
+                                onclick="openLightbox('image', 'assets/bmw-before.jpg', 'BMW M8 Automotive Commercial Sequence — Before / Viewport Pass')"
+                                onerror="handleMediaFallback(this)"
+                            />
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-draw-polygon text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/bmw-before.jpg</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Before / Blender Rigging Viewport Photo Slot</p>
+                            </div>
+                        </div>
+
+                        <button onclick="openActivePassLightbox('bmw')" title="Open Full-Screen Lightbox" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-lg bg-studioBg/85 border border-studioBorder text-gray-300 hover:text-studioGold hover:border-studioGold/60 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">BMW M8 Automotive Commercial Sequence</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Cinematic 3D vehicle animation featuring a detailed BMW M8 coupe traversing a structural bridge environment with wheel rigging, camera tracking, and motion blur.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-3 border-t border-studioBorder">
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Blender</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">After Effects</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Premiere Pro</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 3: Ultimate Bloom — Commercial Product Visualization (bloom-final.jpg + bloom-before.jpg) -->
+                <article class="project-card studio-card rounded-2xl overflow-hidden flex flex-col" data-category="product">
+                    <div class="px-5 py-3.5 bg-studioElevated/60 border-b border-studioBorder flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-xs font-mono text-studioGold">03 // Product Visualization</span>
+                        <div class="inline-flex rounded-xl bg-studioBg p-1 border border-studioBorder">
+                            <button onclick="toggleProjectPass('bloom', 'final')" id="bloom-tab-final" class="px-3 py-1 rounded-lg text-xs font-semibold bg-studioGold text-black transition-all">
+                                Final Output (Photo)
+                            </button>
+                            <button onclick="toggleProjectPass('bloom', 'before')" id="bloom-tab-before" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all">
+                                Before / Clay Pass (Photo)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Media Viewport -->
+                    <div class="relative aspect-video bg-studioBg viewport-grid border-b border-studioBorder overflow-hidden group">
+                        <!-- Final Photo View -->
+                        <div id="bloom-view-final" class="w-full h-full relative">
+                            <img
+                                src="assets/bloom-final.jpg"
+                                alt="Ultimate Bloom Final Render"
+                                class="w-full h-full object-cover cursor-pointer"
+                                onclick="openLightbox('image', 'assets/bloom-final.jpg', 'Ultimate Bloom — Commercial Product Visualization (Final Output)')"
+                                onerror="handleMediaFallback(this)"
+                            />
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-spray-can-sparkles text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/bloom-final.jpg</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Final Cosmetic Product Render Photo Slot</p>
+                            </div>
+                        </div>
+
+                        <!-- Before Clay Photo View -->
+                        <div id="bloom-view-before" class="hidden w-full h-full relative">
+                            <img
+                                src="assets/bloom-before.jpg"
+                                alt="Ultimate Bloom Clay Pass"
+                                class="w-full h-full object-cover cursor-pointer"
+                                onclick="openLightbox('image', 'assets/bloom-before.jpg', 'Ultimate Bloom — Commercial Product Visualization (Clay Pass)')"
+                                onerror="handleMediaFallback(this)"
+                            />
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-shapes text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/bloom-before.jpg</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Before / Orthographic Clay Mesh Photo Slot</p>
+                            </div>
+                        </div>
+
+                        <button onclick="openActivePassLightbox('bloom')" title="Open Full-Screen Lightbox" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-lg bg-studioBg/85 border border-studioBorder text-gray-300 hover:text-studioGold hover:border-studioGold/60 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Ultimate Bloom — Commercial Product Visualization</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                High-end 3D cosmetic packaging display staged on tiered metallic pedestals with custom UV label texturing, glass shaders, and warm three-point studio lighting.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-3 border-t border-studioBorder">
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Blender</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Photoshop</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Premiere Pro</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 4: Red Bull — Commercial Product Render (redbull-final.jpg) -->
+                <article class="project-card studio-card rounded-2xl overflow-hidden flex flex-col" data-category="product">
+                    <div class="px-5 py-3.5 bg-studioElevated/60 border-b border-studioBorder flex items-center justify-between gap-2">
+                        <span class="text-xs font-mono text-studioGold">04 // Product Visualization</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-studioBg text-studioGold border border-studioBorder">
+                            Final Render (Photo)
+                        </span>
+                    </div>
+
+                    <!-- Media Viewport -->
+                    <div class="relative aspect-video bg-studioBg viewport-grid border-b border-studioBorder overflow-hidden group">
+                        <img
+                            src="assets/redbull-final.jpg"
+                            alt="Red Bull Commercial Render"
+                            class="w-full h-full object-cover cursor-pointer"
+                            onclick="openLightbox('image', 'assets/redbull-final.jpg', 'Red Bull — Commercial Product Render')"
+                            onerror="handleMediaFallback(this)"
+                        />
+                        <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                            <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                <i class="fa-solid fa-bolt text-xl"></i>
+                            </div>
+                            <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/redbull-final.jpg</span>
+                            <p class="text-[11px] text-gray-400 mt-2">Final Red Bull Product Render Photo Slot</p>
+                        </div>
+
+                        <button onclick="openLightbox('image', 'assets/redbull-final.jpg', 'Red Bull — Commercial Product Render')" title="Open Full-Screen Lightbox" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-lg bg-studioBg/85 border border-studioBorder text-gray-300 hover:text-studioGold hover:border-studioGold/60 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-expand text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Red Bull — Commercial Product Render</h3>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Photorealistic beverage can render showcasing metallic brushed aluminum shaders, condensation surface detail, and dramatic commercial rim lighting.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-3 border-t border-studioBorder">
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Blender</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Texture Painting</span>
+                            <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Studio Lighting</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 5: Animated iPhone — Commercial Motion Ad (iphone-final.mp4) -->
+                <article class="project-card studio-card rounded-2xl overflow-hidden flex flex-col lg:col-span-2" data-category="animation product">
+                    <div class="px-5 py-3.5 bg-studioElevated/60 border-b border-studioBorder flex items-center justify-between gap-2">
+                        <span class="text-xs font-mono text-studioGold">05 // 3D Animation &amp; Commercial Motion Ad</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-studioBg text-studioGold border border-studioBorder">
+                            Final Output (Video)
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12">
+                        <!-- Media Viewport (7 cols on desktop) -->
+                        <div class="lg:col-span-7 relative aspect-video bg-studioBg viewport-grid border-b lg:border-b-0 lg:border-r border-studioBorder overflow-hidden group">
+                            <video
+                                src="assets/iphone-final.mp4"
+                                class="w-full h-full object-cover cursor-pointer"
+                                controls
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                onclick="openLightbox('video', 'assets/iphone-final.mp4', 'Animated iPhone — Commercial Motion Ad')"
+                                onerror="handleMediaFallback(this)"
+                            ></video>
+                            <div class="media-fallback hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-studioBg viewport-grid">
+                                <div class="w-12 h-12 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center mb-2.5">
+                                    <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-lg bg-studioSurface border border-studioBorder text-studioGold">assets/iphone-final.mp4</span>
+                                <p class="text-[11px] text-gray-400 mt-2">Final Animated iPhone Commercial Video Slot</p>
+                            </div>
+
+                            <button onclick="openLightbox('video', 'assets/iphone-final.mp4', 'Animated iPhone — Commercial Motion Ad')" title="Open Full-Screen Lightbox" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-lg bg-studioBg/85 border border-studioBorder text-gray-300 hover:text-studioGold hover:border-studioGold/60 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-expand text-xs"></i>
+                            </button>
+                        </div>
+
+                        <!-- Description & Pipeline Details (5 cols on desktop) -->
+                        <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-5">
+                            <div class="space-y-3">
+                                <span class="inline-block text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-studioElevated text-studioGold border border-studioBorder">
+                                    Featured Commercial Spot
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Animated iPhone — Commercial Motion Ad</h3>
+                                <p class="text-sm text-gray-400 leading-relaxed">
+                                    Sleek 3D product reveal animation highlighting titanium chassis reflections, multi-lens camera precision, smooth keyframed choreography, and broadcast-ready post-production compositing.
+                                </p>
+                            </div>
+
+                            <div class="space-y-3 pt-4 border-t border-studioBorder">
+                                <p class="text-[11px] font-mono uppercase tracking-wider text-gray-500">Software Pipeline</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs font-medium px-3 py-1.5 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Blender</span>
+                                    <span class="text-xs font-medium px-3 py-1.5 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">After Effects</span>
+                                    <span class="text-xs font-medium px-3 py-1.5 rounded-lg bg-studioElevated text-gray-200 border border-studioBorder">Premiere Pro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Experience & Education Timeline -->
+    <section id="experience" class="py-20 bg-studioSurface/30 border-b border-studioBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-2.5 mb-14">
+                <p class="text-xs font-mono uppercase tracking-widest text-studioGold">Career &amp; Academic Track</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Experience &amp; Education</h2>
+                <p class="text-gray-400 text-sm">Studio internship experience paired with computer science and specialized animation training.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Internship Experience (7 cols) -->
+                <div class="lg:col-span-7 space-y-5">
+                    <h3 class="text-xs font-mono uppercase tracking-wider text-gray-400 flex items-center">
+                        <i class="fa-solid fa-briefcase text-studioGold mr-2.5"></i> Work Experience
+                    </h3>
+
+                    <div class="bg-studioSurface rounded-2xl p-6 sm:p-8 border border-studioBorder space-y-6">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-studioBorder">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">3D Animation &amp; Motion Design Intern</h4>
+                                <p class="text-studioGold font-semibold text-sm mt-0.5">Spinnaker Analytics &mdash; Bangalore, India</p>
+                            </div>
+                            <span class="inline-flex items-center text-xs font-mono text-gray-200 bg-studioElevated px-3.5 py-1.5 rounded-xl border border-studioBorder self-start">
+                                July 2026 &ndash; November 2026
+                            </span>
+                        </div>
+
+                        <ul class="space-y-4 text-sm text-gray-300 leading-relaxed">
+                            <li class="flex items-start">
+                                <span class="text-studioGold mr-3 mt-1 text-xs"><i class="fa-solid fa-chevron-right"></i></span>
+                                <span>Designed and executed high-end 3D product visualization scenes (such as cosmetic packaging displays) using Blender, applying advanced texture painting, realistic lighting, and precise camera framing to produce photorealistic marketing assets.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-studioGold mr-3 mt-1 text-xs"><i class="fa-solid fa-chevron-right"></i></span>
+                                <span>Produced complex 3D vehicle animations and cinematic motion sequences featuring detailed automotive models (BMW), integrating dynamic keyframing, motion tracking, and custom lighting environments.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-studioGold mr-3 mt-1 text-xs"><i class="fa-solid fa-chevron-right"></i></span>
+                                <span>Built immersive environmental and terrain simulations (including glacial landscapes and water scenes), optimizing polygon geometries, lighting rigs, and rendering workflows to deliver high visual fidelity for digital media projects.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education Timeline (5 cols) -->
+                <div class="lg:col-span-5 space-y-5">
+                    <h3 class="text-xs font-mono uppercase tracking-wider text-gray-400 flex items-center">
+                        <i class="fa-solid fa-graduation-cap text-studioGold mr-2.5"></i> Education &amp; Certification
+                    </h3>
+
+                    <div class="space-y-5">
+                        <!-- BIA Certificate -->
+                        <div class="bg-studioSurface rounded-2xl p-6 border border-studioBorder space-y-2.5">
+                            <span class="inline-block text-[11px] font-mono px-3 py-1 rounded-lg bg-studioElevated text-studioGold border border-studioBorder">
+                                Sep 2025 &ndash; Sep 2026
+                            </span>
+                            <h4 class="text-lg font-bold text-white">Certificate Program in 2D/3D Animation, VFX and Digital Design</h4>
+                            <p class="text-xs font-medium text-gray-300">Boston Institute of Analytics (BIA), Bengaluru &ndash; MG Road Campus</p>
+                            <p class="text-xs text-gray-400 leading-relaxed pt-1">
+                                Specialized studio curriculum covering storyboarding, 3D modeling, rigging, texturing, lighting, compositing, and post-production editing.
+                            </p>
+                        </div>
+
+                        <!-- BCA Degree -->
+                        <div class="bg-studioSurface rounded-2xl p-6 border border-studioBorder space-y-2.5">
+                            <span class="inline-block text-[11px] font-mono px-3 py-1 rounded-lg bg-studioElevated text-gray-300 border border-studioBorder">
+                                Sep 2022 &ndash; June 2026
+                            </span>
+                            <h4 class="text-lg font-bold text-white">Bachelor of Computer Applications (BCA)</h4>
+                            <p class="text-xs font-medium text-gray-300">Sri Devaraj Urs Educational Trust(R), Doddaballapur, India</p>
+                            <p class="text-xs text-gray-400 leading-relaxed pt-1">
+                                Foundation in software development, Python scripting, and web technologies (HTML, CSS, JavaScript) supporting technical production workflows.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Technical Skills Matrix (No Autodesk Maya / 3ds Max) -->
+    <section id="skills" class="py-20 bg-studioBg border-b border-studioBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-2.5 mb-14">
+                <p class="text-xs font-mono uppercase tracking-widest text-studioGold">Production Toolset</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Technical Skills Matrix</h2>
+                <p class="text-gray-400 text-sm">End-to-end proficiency across 3D asset creation, VFX compositing, video editing, and digital design.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Category 1 -->
+                <div class="bg-studioSurface rounded-2xl p-6 border border-studioBorder space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center">
+                            <i class="fa-solid fa-cube"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">3D Modeling &amp; Animation</h3>
+                            <p class="text-xs text-gray-400">LookDev, Simulation &amp; Final Render</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Blender</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Unreal Engine</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Rigging</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Texturing</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Lighting</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Rendering</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="bg-studioSurface rounded-2xl p-6 border border-studioBorder space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">Video Editing &amp; Post-Production</h3>
+                            <p class="text-xs text-gray-400">Commercial Cuts, Pacing &amp; Color Grading</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Adobe Premiere Pro</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">DaVinci Resolve</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Storyboarding</span>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="bg-studioSurface rounded-2xl p-6 border border-studioBorder space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">VFX &amp; 2D Motion</h3>
+                            <p class="text-xs text-gray-400">Compositing, Planar Tracking &amp; Motion Graphics</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Adobe After Effects</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Adobe Animate</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Nuke</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Mocha Pro</span>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="bg-studioSurface rounded-2xl p-6 border border-studioBorder space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center">
+                            <i class="fa-solid fa-bezier-curve"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">Digital Design &amp; Technical</h3>
+                            <p class="text-xs text-gray-400">Brand Graphics, UI &amp; Web/Scripting</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Adobe Photoshop</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Adobe Illustrator</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Figma</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">HTML</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">CSS</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">JavaScript</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-studioElevated text-gray-200 border border-studioBorder">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Contact & Languages Footer Section -->
+    <footer id="contact" class="py-20 bg-studioSurface/40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-2.5">
+                <p class="text-xs font-mono uppercase tracking-widest text-studioGold">Direct Contact</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Get In Touch</h2>
+                <p class="text-gray-400 text-sm">Open to full-time 3D Animator, VFX Artist, and Video Editor opportunities in Bangalore.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Location -->
+                <div class="bg-studioSurface rounded-2xl p-5 border border-studioBorder flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Location</p>
+                        <p class="text-sm font-bold text-white">Bangalore, India</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="bg-studioSurface rounded-2xl p-5 border border-studioBorder flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Phone</p>
+                        <a href="tel:+918217488958" class="text-sm font-bold text-white hover:text-studioGold transition-colors">+91 8217488958</a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-studioSurface rounded-2xl p-5 border border-studioBorder flex items-center justify-between gap-2">
+                    <div class="flex items-center space-x-3 min-w-0">
+                        <div class="w-11 h-11 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-xs text-gray-400">Email</p>
+                            <a href="mailto:knmohith711@gmail.com" class="text-xs sm:text-sm font-bold text-white hover:text-studioGold transition-colors truncate block">
+                                knmohith711@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    <button onclick="copyEmailFooter()" id="footer-copy-btn" title="Copy Email" class="p-2 rounded-lg bg-studioElevated border border-studioBorder text-gray-300 hover:text-studioGold transition-colors flex-shrink-0">
+                        <i class="fa-regular fa-copy text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Languages -->
+                <div class="bg-studioSurface rounded-2xl p-5 border border-studioBorder flex items-center space-x-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-studioElevated border border-studioBorder text-studioGold flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Languages</p>
+                        <p class="text-sm font-bold text-white">English, Kannada, Telugu</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-studioBorder text-center space-y-1.5">
+                <p class="text-sm font-bold text-white">Mohith Kothuru Narayanaswamy</p>
+                <p class="text-xs text-gray-500">3D Animator &bull; VFX Artist &bull; Video Editor &mdash; &copy; 2026 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Full-Screen Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-5xl w-full bg-studioSurface rounded-2xl overflow-hidden border border-studioBorder shadow-2xl" onclick="event.stopPropagation()">
+            <div class="px-5 py-3.5 bg-studioElevated border-b border-studioBorder flex items-center justify-between gap-4">
+                <p id="lightbox-caption" class="text-xs sm:text-sm font-semibold text-white truncate">Project Preview</p>
+                <button onclick="closeLightbox()" class="w-8 h-8 rounded-lg bg-studioBg border border-studioBorder text-gray-400 hover:text-white flex items-center justify-center text-lg">
+                    &times;
+                </button>
+            </div>
+
+            <div id="lightbox-media-container" class="aspect-video bg-studioBg viewport-grid flex items-center justify-center overflow-hidden">
+                <!-- Dynamic image or video injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Script -->
+    <script>
+        // 1. Track Active Pass State for Toggleable Projects
+        const activePasses = {
+            iceland: 'final',
+            bmw: 'final',
+            bloom: 'final'
+        };
+
+        const projectMediaMap = {
+            iceland: {
+                final: { type: 'video', src: 'assets/iceland-final.mp4', title: 'Iceland Glacier & Terrain Environment — Final Output' },
+                before: { type: 'image', src: 'assets/iceland-before.jpg', title: 'Iceland Glacier & Terrain Environment — Before / Viewport Pass' }
+            },
+            bmw: {
+                final: { type: 'video', src: 'assets/bmw-final.mp4', title: 'BMW M8 Automotive Commercial Sequence — Final Output' },
+                before: { type: 'image', src: 'assets/bmw-before.jpg', title: 'BMW M8 Automotive Commercial Sequence — Before / Viewport Pass' }
+            },
+            bloom: {
+                final: { type: 'image', src: 'assets/bloom-final.jpg', title: 'Ultimate Bloom — Commercial Product Visualization (Final Output)' },
+                before: { type: 'image', src: 'assets/bloom-before.jpg', title: 'Ultimate Bloom — Commercial Product Visualization (Before / Clay Pass)' }
+            }
+        };
+
+        // Switch between Final Output and Before / Viewport Pass
+        function toggleProjectPass(projectId, pass) {
+            activePasses[projectId] = pass;
+
+            const finalView = document.getElementById(`${projectId}-view-final`);
+            const beforeView = document.getElementById(`${projectId}-view-before`);
+            const finalTab = document.getElementById(`${projectId}-tab-final`);
+            const beforeTab = document.getElementById(`${projectId}-tab-before`);
+
+            if (pass === 'final') {
+                finalView.classList.remove('hidden');
+                beforeView.classList.add('hidden');
+                finalTab.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-studioGold text-black transition-all';
+                beforeTab.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all';
+            } else {
+                beforeView.classList.remove('hidden');
+                finalView.classList.add('hidden');
+                beforeTab.className = 'px-3 py-1 rounded-lg text-xs font-semibold bg-studioGold text-black transition-all';
+                finalTab.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all';
+            }
+        }
+
+        // 2. Graceful Fallback Handler when assets/ files are not added yet
+        function handleMediaFallback(mediaEl) {
+            mediaEl.classList.add('hidden');
+            const fallback = mediaEl.parentElement.querySelector('.media-fallback');
+            if (fallback) {
+                fallback.classList.remove('hidden');
+            }
+        }
+
+        // 3. Lightbox Modal Functions
+        function openActivePassLightbox(projectId) {
+            const pass = activePasses[projectId];
+            const info = projectMediaMap[projectId][pass];
+            openLightbox(info.type, info.src, info.title);
+        }
+
+        function openLightbox(type, src, title) {
+            const modal = document.getElementById('lightbox-modal');
+            const container = document.getElementById('lightbox-media-container');
+            document.getElementById('lightbox-caption').innerText = title;
+
+            if (type === 'video') {
+                container.innerHTML = `
+                    <video src="${src}" class="w-full h-full object-contain" controls autoplay playsinline onerror="this.outerHTML='<div class=\\'p-8 text-center space-y-2\\'><p class=\\'text-xs font-mono text-studioGold\\'>${src}</p><p class=\\'text-xs text-gray-400\\'>Add this video file to your assets/ folder to preview it full-screen.</p></div>'"></video>
+                `;
+            } else {
+                container.innerHTML = `
+                    <img src="${src}" alt="${title}" class="w-full h-full object-contain" onerror="this.outerHTML='<div class=\\'p-8 text-center space-y-2\\'><p class=\\'text-xs font-mono text-studioGold\\'>${src}</p><p class=\\'text-xs text-gray-400\\'>Add this image file to your assets/ folder to preview it full-screen.</p></div>'" />
+                `;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            const container = document.getElementById('lightbox-media-container');
+            container.innerHTML = '';
+            modal.classList.add('hidden');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // 4. Portfolio Category Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.className = 'filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-studioSurface text-gray-300 border border-studioBorder hover:text-white transition-all';
+                });
+                btn.className = 'filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold bg-studioGold text-black transition-all';
+
+                const selected = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category');
+                    if (selected === 'all' || categories.includes(selected)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 5. Copy Email Utility (iFrame-safe execCommand fallback)
+        function copyToClipboard(text) {
+            const temp = document.createElement('input');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+        }
+
+        function copyEmailHeader() {
+            copyToClipboard('knmohith711@gmail.com');
+            const label = document.getElementById('header-copy-label');
+            label.innerText = 'Copied!';
+            setTimeout(() => {
+                label.innerText = 'Copy Email';
+            }, 2200);
+        }
+
+        function copyEmailFooter() {
+            copyToClipboard('knmohith711@gmail.com');
+            const btn = document.getElementById('footer-copy-btn');
+            btn.innerHTML = '<i class="fa-solid fa-check text-studioGold text-xs"></i>';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-regular fa-copy text-xs"></i>';
+            }, 2200);
+        }
+
+        // 6. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // 7. Subtle Animated 3D Perspective Floor Grid & Rotating Wireframe Mesh
+        window.onload = function () {
+            const canvas = document.getElementById('hero-3d-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let angle = 0;
+
+            function resizeCanvas() {
+                const hero = document.getElementById('hero');
+                width = canvas.width = hero.offsetWidth;
+                height = canvas.height = hero.offsetHeight;
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // 3D Octahedron / Viewport Mesh Vertices
+            const vertices = [
+                [0, -1.35, 0], [0, 1.35, 0],
+                [-1.1, 0, -1.1], [1.1, 0, -1.1],
+                [1.1, 0, 1.1], [-1.1, 0, 1.1]
+            ];
+            const edges = [
+                [0, 2], [0, 3], [0, 4], [0, 5],
+                [1, 2], [1, 3], [1, 4], [1, 5],
+                [2, 3], [3, 4], [4, 5], [5, 2]
+            ];
+
+            function renderLoop() {
+                ctx.clearRect(0, 0, width, height);
+
+                // 3D Perspective Viewport Floor Grid
+                const horizonY = height * 0.64;
+                const centerX = width * 0.5;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
+                ctx.lineWidth = 1;
+
+                for (let i = -12; i <= 12; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(centerX + i * 55, horizonY);
+                    ctx.lineTo(centerX + i * 250, height);
+                    ctx.stroke();
+                }
+
+                for (let j = 1; j <= 7; j++) {
+                    const y = horizonY + Math.pow(j / 7, 1.8) * (height - horizonY);
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
+                }
+
+                // Rotating Wireframe Polyhedron
+                angle += 0.0045;
+                const scale = Math.min(width, height) * 0.24;
+                const meshCenterX = width * 0.5;
+                const meshCenterY = height * 0.38;
+
+                const projected = vertices.map(([x, y, z]) => {
+                    const cosY = Math.cos(angle);
+                    const sinY = Math.sin(angle);
+                    const x1 = x * cosY - z * sinY;
+                    const z1 = z * cosY + x * sinY;
+
+                    const cosX = Math.cos(angle * 0.5);
+                    const sinX = Math.sin(angle * 0.5);
+                    const y2 = y * cosX - z1 * sinX;
+                    const z2 = z1 * cosX + y * sinX;
+
+                    const fov = 4.2 / (4.2 + z2);
+                    return [
+                        meshCenterX + x1 * scale * fov,
+                        meshCenterY + y2 * scale * fov
+                    ];
+                });
+
+                ctx.strokeStyle = 'rgba(245, 158, 11, 0.1)';
+                ctx.lineWidth = 1;
+                edges.forEach(([a, b]) => {
+                    ctx.beginPath();
+                    ctx.moveTo(projected[a][0], projected[a][1]);
+                    ctx.lineTo(projected[b][0], projected[b][1]);
+                    ctx.stroke();
+                });
+
+                ctx.fillStyle = 'rgba(245, 158, 11, 0.2)';
+                projected.forEach(([px, py]) => {
+                    ctx.beginPath();
+                    ctx.arc(px, py, 2, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(renderLoop);
+            }
+
+            renderLoop();
+        };
+    </script>
+</body>
+</html>
